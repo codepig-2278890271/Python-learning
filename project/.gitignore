@@ -1,0 +1,20 @@
+# 编译临时文件
+build/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 日志
+log/
+
+# 虚拟环境
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

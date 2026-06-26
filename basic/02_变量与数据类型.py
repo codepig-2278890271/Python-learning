@@ -77,6 +77,14 @@ Python 有几种基本的数据类型：
 用 type() 函数可以查看一个值或变量的类型：
 """
 
+# 先直接用 type() 看看几个字面量的类型
+print("type(42)     →", type(42))       # 整数
+print("type(3.14)   →", type(3.14))     # 浮点数
+print('type("hi")   →', type("hi"))     # 字符串
+print("type(True)   →", type(True))     # 布尔值
+print("type(None)   →", type(None))     # NoneType
+print()  # 空行分隔
+
 # 来看看每种类型
 text = "Hello Python"
 integer = 100

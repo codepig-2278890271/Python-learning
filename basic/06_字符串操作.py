@@ -27,8 +27,29 @@ print("原始字符串:", repr(s))  # repr() 可以看到空格和真实内容
 print("\n--- 查找和判断 ---")
 print("长度 len(s):         ", len(s))                    # 字符串长度
 print("'Python' 在里面吗？   ", "Python" in s)             # 是否包含
-print("以 'Hel' 开头？       ", s.strip().startswith("Hel"))  # 是否以xxx开头
-print("以 'ld!' 结尾？       ", s.strip().endswith("ld!"))    # 是否以xxx结尾
+
+# ------------------------------------------------------------
+# 【链式调用详解】下面是 s.strip().startswith("Hel") 的逐层拆解：
+#
+#   s.strip() .startswith("Hel")
+#   └─────┘  └──────────────────┘
+#      ↓              ↓
+#   第1步：        第2步：
+#   去掉s首尾      判断结果是否以"Hel"开头
+#   的空格         返回 True 或 False
+#
+#   过程：
+#   s                              → "  Hello, Python World!  "  ← 开头有空格
+#   s.strip()                      → "Hello, Python World!"      ← 空格没了
+#   s.strip().startswith("Hel")    → True                        ← 以 Hel 开头！
+#
+#   . 就是"的" / "对…做…"：s.strip() → 对s做strip操作
+#   链式调用 = 从左到右，上一步的结果传给下一步继续处理
+#
+#   为什么要 strip()？因为 s 开头是空格，直接 .startswith("Hel") 会返回 False
+# ------------------------------------------------------------
+print("以 'Hel' 开头？       ", s.strip().startswith("Hel"))  # 链式调用：先去空格，再判断开头
+print("以 'ld!' 结尾？       ", s.strip().endswith("ld!"))    # 链式调用：先去空格，再判断结尾
 
 print("\n--- 大小写转换 ---")
 print("全部大写 s.upper():   ", s.upper())                 # 全大写
@@ -53,7 +74,12 @@ age = 25
 height = 175.5
 
 # 在字符串前面加 f，然后在 {} 里直接写变量名
-print(f"我叫{name}，今年{age}岁，身高{height}厘米。")
+print(f"我叫{name}，今年{age}岁，身高{height}厘米。")   # f-string：变量嵌入字符串，无多余空格
+# 对比：print() 用逗号隔开多个参数时，默认会在参数之间加空格（sep=" "）
+print("我叫",name,"今年",age,"岁，身高",height,"厘米。")  # 多参数：每个参数间自动加空格
+# 输出对比：
+#   f-string → 我叫小明，今年25岁，身高175.5厘米。  （紧凑，自己控制格式）
+#   多参数   → 我叫 小明 今年 25 岁，身高 175.5 厘米。（参数间自动空格）
 
 # {} 里面还能做运算
 price = 9.9

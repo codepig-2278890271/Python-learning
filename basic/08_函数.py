@@ -48,6 +48,7 @@ say_hello()
 print("\n第二次调用：")
 say_hello()
 
+print()
 # ----- 带参数的函数 -----
 def greet(name):
     """向指定的人打招呼"""
@@ -56,6 +57,7 @@ def greet(name):
 greet("小明")
 greet("小红")
 greet("老师")
+print()
 
 # 多个参数
 def introduce(name, age, hobby):
